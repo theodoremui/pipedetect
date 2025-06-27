@@ -44,23 +44,23 @@ echo -e "${CYAN}--- BASIC EXAMPLES ---${NC}"
 echo
 
 echo -e "${BLUE}1. Display help and available options:${NC}"
-echo "python detect.py --help"
+echo "python src/detect.py --help"
 echo
 
 echo -e "${BLUE}2. Process a single video file (basic usage):${NC}"
-echo "python detect.py video.mp4"
+echo "python src/detect.py video.mp4"
 echo
 
 echo -e "${BLUE}3. Process a single image file:${NC}"
-echo "python detect.py image.jpg"
+echo "python src/detect.py image.jpg"
 echo
 
 echo -e "${BLUE}4. Process all images in a directory:${NC}"
-echo "python detect.py images_folder/"
+echo "python src/detect.py images_folder/"
 echo
 
 echo -e "${BLUE}5. Specify custom output directory:${NC}"
-echo "python detect.py video.mp4 --output-dir results/"
+echo "python src/detect.py video.mp4 --output-dir results/"
 echo
 
 echo
@@ -68,25 +68,25 @@ echo -e "${CYAN}--- ADVANCED CONFIGURATION ---${NC}"
 echo
 
 echo -e "${BLUE}6. High-precision detection with heavy model:${NC}"
-echo "python detect.py video.mp4 \\"
+echo "python src/detect.py video.mp4 \\"
 echo "  --model-complexity 2 \\"
 echo "  --detection-confidence 0.8 \\"
 echo "  --tracking-confidence 0.8"
 echo
 
 echo -e "${BLUE}7. Fast processing with light model:${NC}"
-echo "python detect.py video.mp4 \\"
+echo "python src/detect.py video.mp4 \\"
 echo "  --model-complexity 0 \\"
 echo "  --detection-confidence 0.3 \\"
 echo "  --no-frames --no-overlays"
 echo
 
 echo -e "${BLUE}8. Enable pose segmentation for detailed analysis:${NC}"
-echo "python detect.py video.mp4 --segmentation --model-complexity 2"
+echo "python src/detect.py video.mp4 --segmentation --model-complexity 2"
 echo
 
 echo -e "${BLUE}9. Custom output filenames:${NC}"
-echo "python detect.py video.mp4 --json my_poses.json --csv my_analysis.csv"
+echo "python src/detect.py video.mp4 --json my_poses.json --csv my_analysis.csv"
 echo
 
 echo
@@ -94,15 +94,15 @@ echo -e "${CYAN}--- OUTPUT CONTROL ---${NC}"
 echo
 
 echo -e "${BLUE}10. Save only pose data (no frame images):${NC}"
-echo "python detect.py video.mp4 --no-frames --no-overlays"
+echo "python src/detect.py video.mp4 --no-frames --no-overlays"
 echo
 
 echo -e "${BLUE}11. Generate only overlay visualizations:${NC}"
-echo "python detect.py video.mp4 --no-frames"
+echo "python src/detect.py video.mp4 --no-frames"
 echo
 
 echo -e "${BLUE}12. Process with custom confidence thresholds:${NC}"
-echo "python detect.py video.mp4 --detection-confidence 0.7 --tracking-confidence 0.6"
+echo "python src/detect.py video.mp4 --detection-confidence 0.7 --tracking-confidence 0.6"
 echo
 
 echo
@@ -110,19 +110,19 @@ echo -e "${CYAN}--- LOGGING AND DEBUGGING ---${NC}"
 echo
 
 echo -e "${BLUE}13. Verbose output with detailed logging:${NC}"
-echo "python detect.py video.mp4 --verbose --verbose"
+echo "python src/detect.py video.mp4 --verbose --verbose"
 echo
 
 echo -e "${BLUE}14. Save processing logs to file:${NC}"
-echo "python detect.py video.mp4 --log-file processing.log --verbose"
+echo "python src/detect.py video.mp4 --log-file processing.log --verbose"
 echo
 
 echo -e "${BLUE}15. Quiet mode (suppress console output):${NC}"
-echo "python detect.py video.mp4 --quiet"
+echo "python src/detect.py video.mp4 --quiet"
 echo
 
 echo -e "${BLUE}16. Hide progress bar:${NC}"
-echo "python detect.py video.mp4 --no-progress"
+echo "python src/detect.py video.mp4 --no-progress"
 echo
 
 echo
@@ -131,12 +131,12 @@ echo
 
 echo -e "${BLUE}17. Process multiple videos in sequence:${NC}"
 echo "for video in *.mp4; do"
-echo "  python detect.py \"\$video\" --output-dir \"results_\$(basename \"\$video\" .mp4)\""
+echo "  python src/detect.py \"\$video\" --output-dir \"results_\$(basename \"\$video\" .mp4)\""
 echo "done"
 echo
 
 echo -e "${BLUE}18. Fast batch processing of images:${NC}"
-echo "python detect.py images/ --model-complexity 0 --no-frames --csv batch_results.csv"
+echo "python src/detect.py images/ --model-complexity 0 --no-frames --csv batch_results.csv"
 echo
 
 echo
@@ -144,7 +144,7 @@ echo -e "${CYAN}--- RESEARCH/ANALYSIS SETUPS ---${NC}"
 echo
 
 echo -e "${BLUE}19. Maximum accuracy for research:${NC}"
-echo "python detect.py video.mp4 \\"
+echo "python src/detect.py video.mp4 \\"
 echo "  --model-complexity 2 \\"
 echo "  --detection-confidence 0.9 \\"
 echo "  --segmentation \\"
@@ -152,7 +152,7 @@ echo "  --json detailed_analysis.json"
 echo
 
 echo -e "${BLUE}20. Biomechanics analysis with comprehensive logging:${NC}"
-echo "python detect.py sports_video.mp4 \\"
+echo "python src/detect.py sports_video.mp4 \\"
 echo "  --model-complexity 2 \\"
 echo "  --detection-confidence 0.8 \\"
 echo "  --verbose \\"
@@ -178,14 +178,14 @@ show_menu() {
 run_example() {
     case $1 in
         1)
-            echo -e "${GREEN}Running: python detect.py --help${NC}"
-            python detect.py --help
+            echo -e "${GREEN}Running: python src/detect.py --help${NC}"
+            python src/detect.py --help
             ;;
         2)
             if [ -f "video.mp4" ] || [ -f "test.mp4" ] || [ -f "sample.mp4" ]; then
                 video_file=$(ls *.mp4 2>/dev/null | head -1)
-                echo -e "${GREEN}Running: python detect.py $video_file${NC}"
-                python detect.py "$video_file"
+                echo -e "${GREEN}Running: python src/detect.py $video_file${NC}"
+                python src/detect.py "$video_file"
             else
                 echo -e "${YELLOW}No video files found. Please add a .mp4 file to test.${NC}"
             fi
@@ -193,8 +193,8 @@ run_example() {
         3)
             if [ -f "image.jpg" ] || [ -f "test.jpg" ] || [ -f "sample.jpg" ]; then
                 image_file=$(ls *.jpg *.jpeg *.png 2>/dev/null | head -1)
-                echo -e "${GREEN}Running: python detect.py $image_file${NC}"
-                python detect.py "$image_file"
+                echo -e "${GREEN}Running: python src/detect.py $image_file${NC}"
+                python src/detect.py "$image_file"
             else
                 echo -e "${YELLOW}No image files found. Please add an image file to test.${NC}"
             fi
@@ -203,7 +203,7 @@ run_example() {
             echo -e "${GREEN}Creating sample test directory structure...${NC}"
             mkdir -p test_data
             echo -e "${YELLOW}Place your video/image files in the test_data/ directory${NC}"
-            echo -e "${YELLOW}Then run: python detect.py test_data/${NC}"
+            echo -e "${YELLOW}Then run: python src/detect.py test_data/${NC}"
             ;;
         5)
             echo -e "${GREEN}Running performance benchmark...${NC}"
@@ -213,13 +213,13 @@ run_example() {
                 video_file=$(ls *.mp4 2>/dev/null | head -1)
                 
                 echo -e "${CYAN}Testing Light Model (fast):${NC}"
-                time python detect.py "$video_file" --model-complexity 0 --no-frames --no-overlays --quiet
+                time python src/detect.py "$video_file" --model-complexity 0 --no-frames --no-overlays --quiet
                 
                 echo -e "${CYAN}Testing Full Model (balanced):${NC}"
-                time python detect.py "$video_file" --model-complexity 1 --no-frames --no-overlays --quiet
+                time python src/detect.py "$video_file" --model-complexity 1 --no-frames --no-overlays --quiet
                 
                 echo -e "${CYAN}Testing Heavy Model (accurate):${NC}"
-                time python detect.py "$video_file" --model-complexity 2 --no-frames --no-overlays --quiet
+                time python src/detect.py "$video_file" --model-complexity 2 --no-frames --no-overlays --quiet
             else
                 echo -e "${YELLOW}No video file found for benchmark. Please add a .mp4 file.${NC}"
             fi
@@ -257,7 +257,7 @@ fi
 echo
 echo "============================================================================"
 echo -e "${GREEN}For more information:${NC}"
-echo "  • Run: python detect.py --help"
+echo "  • Run: python src/detect.py --help"
 echo "  • Read: docs/USAGE.md"
 echo "  • Check: docs/INSTALLATION.md"
 echo "============================================================================"

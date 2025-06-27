@@ -1,4 +1,4 @@
-# PipeDetect 🕺
+# PipeDetect
 
 **Professional Pose Estimation using MediaPipe**
 
@@ -8,7 +8,7 @@ A modern, extensible Python application for detecting human poses in videos and 
 [![uv](https://img.shields.io/badge/uv-package%20manager-blue)](https://github.com/astral-sh/uv)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## 🚀 Features
+## Features
 
 - **Multi-format Support**: Process videos, single images, or entire directories of images
 - **High-Quality Pose Detection**: Leverages MediaPipe's state-of-the-art pose estimation models
@@ -21,12 +21,12 @@ A modern, extensible Python application for detecting human poses in videos and 
 - **Robust Error Handling**: Graceful error handling with detailed error messages
 - **Extensible Architecture**: Modular design following SOLID principles
 
-## 📋 Requirements
+## Requirements
 
 - Python 3.12 or higher
 - [uv](https://github.com/astral-sh/uv) package manager (recommended)
 
-## 🔧 Installation
+## Installation
 
 ### Using uv (Recommended)
 
@@ -67,50 +67,72 @@ cd pipedetect
 pip install -e .
 ```
 
-## 🎯 Quick Start
+## Quick Start
+
+Use the convenient quick start scripts in the `scripts/` directory:
+
+```bash
+# On Unix/macOS
+./scripts/quick_start.sh
+
+# On Windows
+scripts\quick_start.bat
+```
 
 ### Basic Usage
 
 ```bash
 # Process a video file
-python detect.py video.mp4
+python src/detect.py video.mp4
 
 # Process a single image
-python detect.py image.jpg
+python src/detect.py image.jpg
 
 # Process all images in a directory
-python detect.py /path/to/images/
+python src/detect.py /path/to/images/
 
 # Specify custom output directory
-python detect.py video.mp4 --output-dir results/
+python src/detect.py video.mp4 --output-dir results/
 ```
 
 ### Advanced Usage
 
 ```bash
 # High-precision detection with heavy model
-python detect.py video.mp4 \
+python src/detect.py video.mp4 \
   --model-complexity 2 \
   --detection-confidence 0.8 \
   --tracking-confidence 0.7
 
 # Custom output filenames
-python detect.py video.mp4 \
+python src/detect.py video.mp4 \
   --json my_poses.json \
   --csv my_poses.csv
 
 # Enable segmentation and disable frame saving
-python detect.py video.mp4 \
+python src/detect.py video.mp4 \
   --segmentation \
   --no-frames
 
 # Verbose logging with log file
-python detect.py video.mp4 \
+python src/detect.py video.mp4 \
   --verbose --verbose \
   --log-file pose_detection.log
 ```
 
-## 📁 Output Structure
+### Example Scripts
+
+Run comprehensive examples using the provided scripts:
+
+```bash
+# On Unix/macOS
+./scripts/run_examples.sh
+
+# On Windows
+scripts\run_examples.bat
+```
+
+## Output Structure
 
 PipeDetect generates comprehensive outputs organized in the `outputs/` directory:
 
@@ -166,7 +188,7 @@ Contains frame-by-frame data with columns for each of the 33 pose landmarks:
 - Basic info: `frame_id`, `timestamp`, `confidence`, `source_file`
 - Landmarks: `landmark_0_x`, `landmark_0_y`, `landmark_0_z`, `landmark_0_visibility`, `landmark_0_presence`, ...
 
-## ⚙️ Configuration Options
+## Configuration Options
 
 ### Model Parameters
 - `--model-complexity`: 0 (light), 1 (full), 2 (heavy) - Default: 1
@@ -188,7 +210,7 @@ Contains frame-by-frame data with columns for each of the 33 pose landmarks:
 - `--no-progress`: Hide progress bar
 - `--log-file`: Save logs to file
 
-## 🧪 Testing
+## Testing
 
 Run the comprehensive test suite:
 
@@ -204,36 +226,48 @@ uv run pytest tests/test_core_models.py
 uv run pytest tests/test_validators.py -v
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 PipeDetect follows modern software engineering principles:
 
 ### Project Structure
 ```
 pipedetect/
-├── src/pipedetect/              # Main package
-│   ├── core/                    # Core business logic
-│   │   ├── models.py           # Data models (Pydantic)
-│   │   └── exceptions.py       # Custom exceptions
-│   ├── detection/              # MediaPipe integration
-│   │   ├── pose_detector.py    # High-level detector
-│   │   └── mediapipe_wrapper.py # MediaPipe wrapper
-│   ├── io/                     # Input/Output handling
-│   │   ├── exporters.py        # JSON/CSV exporters
-│   │   ├── validators.py       # Input validation
-│   │   └── file_manager.py     # File operations
-│   ├── visualization/          # Rendering and progress
-│   │   ├── overlay_renderer.py # Pose visualization
-│   │   └── progress_tracker.py # Progress display
-│   ├── utils/                  # Utilities
-│   │   ├── logging_config.py   # Logging setup
-│   │   └── performance.py      # Performance profiling
-│   └── cli/                    # Command-line interface
-│       ├── main.py            # CLI entry point
-│       └── processor.py       # Main orchestrator
-├── tests/                      # Comprehensive test suite
-├── detect.py                   # Main script
-└── pyproject.toml             # Project configuration
+├── src/                        # Source code
+│   ├── detect.py              # Main entry point
+│   └── pipedetect/            # Main package
+│       ├── core/              # Core business logic
+│       │   ├── models.py      # Data models (Pydantic)
+│       │   └── exceptions.py  # Custom exceptions
+│       ├── detection/         # MediaPipe integration
+│       │   ├── pose_detector.py    # High-level detector
+│       │   └── mediapipe_wrapper.py # MediaPipe wrapper
+│       ├── io/                # Input/Output handling
+│       │   ├── exporters.py   # JSON/CSV exporters
+│       │   ├── validators.py  # Input validation
+│       │   └── file_manager.py # File operations
+│       ├── visualization/     # Rendering and progress
+│       │   ├── overlay_renderer.py # Pose visualization
+│       │   └── progress_tracker.py # Progress display
+│       ├── utils/             # Utilities
+│       │   ├── logging_config.py   # Logging setup
+│       │   └── performance.py      # Performance profiling
+│       └── cli/               # Command-line interface
+│           ├── main.py        # CLI entry point
+│           └── processor.py   # Main orchestrator
+├── scripts/                   # Automation scripts
+│   ├── quick_start.sh        # Quick start for Unix/macOS
+│   ├── quick_start.bat       # Quick start for Windows
+│   ├── run_examples.sh       # Examples for Unix/macOS
+│   └── run_examples.bat      # Examples for Windows
+├── docs/                     # Documentation
+│   ├── INSTALLATION.md       # Installation guide
+│   ├── USAGE.md             # Usage guide
+│   ├── PROJECT_SUMMARY.md   # Project overview
+│   └── FINAL_PROJECT_STRUCTURE.md # Architecture details
+├── tests/                    # Comprehensive test suite
+├── data/                     # Sample data and videos
+└── pyproject.toml           # Project configuration
 ```
 
 ### Design Principles
@@ -244,7 +278,7 @@ pipedetect/
 - **Comprehensive Error Handling**: Graceful failure with detailed messages
 - **Performance Monitoring**: Built-in profiling and metrics
 
-## 🔧 Development
+## Development
 
 ### Setting up Development Environment
 
@@ -272,7 +306,7 @@ uv run mypy src/
 3. **Visualizations**: Extend `OverlayRenderer` in `visualization/overlay_renderer.py`
 4. **CLI Options**: Add to `cli/main.py` and update `processor.py`
 
-## 📊 Performance
+## Performance
 
 PipeDetect is optimized for performance:
 
@@ -286,7 +320,7 @@ PipeDetect is optimized for performance:
 - **Image Batch**: ~10-50 images/second depending on size
 - **Memory Usage**: ~200-500MB for typical video processing
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -296,23 +330,23 @@ PipeDetect is optimized for performance:
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [MediaPipe](https://github.com/google-ai-edge/mediapipe) for the excellent pose estimation models
 - [uv](https://github.com/astral-sh/uv) for modern Python package management
 - [Rich](https://github.com/Textualize/rich) for beautiful terminal interfaces
 - [Typer](https://github.com/tiangolo/typer) for the CLI framework
 
-## 🆘 Support
+## Support
 
-- 📖 [Documentation](docs/)
-- 🐛 [Issue Tracker](https://github.com/your-username/pipedetect/issues)
-- 💬 [Discussions](https://github.com/your-username/pipedetect/discussions)
+- [Documentation](docs/)
+- [Issue Tracker](https://github.com/your-username/pipedetect/issues)
+- [Discussions](https://github.com/your-username/pipedetect/discussions)
 
 ---
 
-Built with ❤️ for the computer vision community
+Built with care for the computer vision community

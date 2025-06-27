@@ -26,7 +26,7 @@ fi
 # Display help first
 echo -e "${CYAN}Showing available options:${NC}"
 echo
-python detect.py --help
+python src/detect.py --help
 
 echo
 echo "============================================================================"
@@ -35,15 +35,15 @@ echo "==========================================================================
 echo
 echo -e "${BLUE}Basic usage examples:${NC}"
 echo
-echo "  Process a video:     python detect.py your_video.mp4"
-echo "  Process an image:    python detect.py your_image.jpg"
-echo "  Process a folder:    python detect.py your_images_folder/"
+echo "  Process a video:     python src/detect.py your_video.mp4"
+echo "  Process an image:    python src/detect.py your_image.jpg"
+echo "  Process a folder:    python src/detect.py your_images_folder/"
 echo
 echo -e "${BLUE}Advanced examples:${NC}"
 echo
-echo "  High accuracy:       python detect.py video.mp4 --model-complexity 2 --detection-confidence 0.8"
-echo "  Fast processing:     python detect.py video.mp4 --model-complexity 0 --no-frames --no-overlays"
-echo "  Custom output:       python detect.py video.mp4 --json my_poses.json --output-dir results/"
+echo "  High accuracy:       python src/detect.py video.mp4 --model-complexity 2 --detection-confidence 0.8"
+echo "  Fast processing:     python src/detect.py video.mp4 --model-complexity 0 --no-frames --no-overlays"
+echo "  Custom output:       python src/detect.py video.mp4 --json my_poses.json --output-dir results/"
 echo
 echo "============================================================================"
 echo
